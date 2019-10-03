@@ -1,4 +1,5 @@
 {% set release = "2.0.2-alpha" %}
+{% set version = "2.0.2" %}
 {% set name = "wisdem" %}
 
 package:
