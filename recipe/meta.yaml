@@ -1,3 +1,4 @@
+{% set release = "2.0.2-alpha" %}
 {% set version = "2.0.2" %}
 {% set name = "wisdem" %}
 
@@ -6,8 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}-alpha.tar.gz
-  sha256: dae8b7d846282d8f0b7d856e79771cf03d5cdfce726c0b765453f36b9fa2aca8
+  url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
+  sha256: bfb9a27cd7821850fe228fff1955f82c2218a1105e4071ee002c579cd4407d20
 
 build:
   number: 0
