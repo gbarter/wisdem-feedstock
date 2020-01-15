@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
-  sha256: bfb9a27cd7821850fe228fff1955f82c2218a1105e4071ee002c579cd4407d20
+  sha256: 4ef5ed66e8dbfdef796d137b66245c55828e9a1a4b7ae3186db056258c848911
 
 build:
   number: 0
