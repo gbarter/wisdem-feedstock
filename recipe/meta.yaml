@@ -1,5 +1,5 @@
-{% set release = "2.0.2-alpha" %}
-{% set version = "2.1.0" %}
+{% set release = "2.1.1" %}
+{% set version = "2.1.1" %}
 {% set name = "wisdem" %}
 
 package:
@@ -8,8 +8,9 @@ package:
 
 source:
   url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
-  sha256: bfb9a27cd7821850fe228fff1955f82c2218a1105e4071ee002c579cd4407d20
-
+  sha256: 65753a33b5f84bae98be5c10c83051b78ff88193b0d7267b9ac66b486d2293f0
+# Download the tar-ball and do: openssl sha256 file.tar.gz to update
+  
 build:
   number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
@@ -53,6 +54,8 @@ requirements:
     - openmdao
     - mpi4py  # [not win]
     - petsc4py  # [not win]
+    - pytest
+    - geopy
 
 test:
   imports:
