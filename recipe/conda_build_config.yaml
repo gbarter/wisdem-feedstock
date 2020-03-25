@@ -6,3 +6,7 @@ cxx_compiler:  # [win]
   - vs2015  # [win]
 fortran_compiler_version:  # [osx]
   - 7  # [osx]
+python:
+  - 3.6
+  - 3.7
+  - 3.8
