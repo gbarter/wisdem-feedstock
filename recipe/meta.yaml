@@ -1,4 +1,4 @@
-{% set release = "2.1.5" %}
+{% set release = "v2.1.5" %}
 {% set version = "2.1.5" %}
 {% set name = "wisdem" %}
 
