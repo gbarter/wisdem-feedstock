@@ -1,5 +1,5 @@
-{% set release = "2.1.4" %}
-{% set version = "2.1.4" %}
+{% set release = "v2.1.5" %}
+{% set version = "2.1.5" %}
 {% set name = "wisdem" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
-  sha256: 89e649b138fa26ef97c5e83ac826ef30e84170801798e75db68ae00d139d8323
+  sha256: 9ecb0d3fd352dad08ae77da3e2f41e92f69e05a250cecf08417e8ee845b7be0e
 # Download the tar-ball and do: openssl sha256 file.tar.gz to update
   
 build:
@@ -56,6 +56,8 @@ requirements:
     - petsc4py  # [not win]
     - pytest
     - geopy
+    - sympy
+    - shapely
 
 test:
   imports:
