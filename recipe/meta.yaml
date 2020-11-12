@@ -1,5 +1,5 @@
-{% set release = "v2.1.5" %}
-{% set version = "2.1.5" %}
+{% set release = "v3.0.0" %}
+{% set version = "3.0.0" %}
 {% set name = "wisdem" %}
 
 package:
@@ -37,27 +37,25 @@ requirements:
     - scipy
   run:
     - python
-    - {{ pin_compatible('numpy') }}
+    - numpy
     - scipy
-    - matplotlib-base
-    - six
-    - numpydoc
     - pandas
     - openpyxl
     - xlrd
     - cython
     - swig
-    - make
     - jsonschema
     - ruamel_yaml
     - pyyaml
     - openmdao
+    - pytest
+    - pyside2
     - mpi4py  # [not win]
     - petsc4py  # [not win]
-    - pytest
-    - geopy
-    - sympy
-    - shapely
+#    - geopy
+#    - matplotlib-base
+#    - six
+#    - numpydoc
 
 test:
   imports:
@@ -74,13 +72,13 @@ about:
     use wind turbine and plant cost and energy production as well as financial
     models to estimate coe and other wind plant system attributes. It is built
     in OpenMDAO.
-  doc_url: http://wisdem.github.io/WISDEM
+  doc_url: https://wisdem.readthedocs.io
   dev_url: https://github.com/wisdem/wisdem
 
 extra:
   recipe-maintainers:
     - jefalon
     - ptrbortolotti
-    - evan-gaertner
     - gbarter
+    - johnjasa
     
