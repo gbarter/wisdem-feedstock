@@ -12,7 +12,7 @@ source:
     sha256: d0376412c1a23b10ff38d2897788cffe3d1de86baadc3f4e0c46fc4da14eb183
     
 build:
-    number: 0
+    number: 1
     script: "{{ PYTHON }} -m pip install . --no-deps -vv"
     skip: true    # [py<35]
 
@@ -37,7 +37,7 @@ requirements:
         - scipy
     run:
         - python
-        - numpy
+        - {{ pin_compatible('numpy') }}
         - scipy
         - pandas
         - openpyxl
