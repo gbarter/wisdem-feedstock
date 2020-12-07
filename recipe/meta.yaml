@@ -47,7 +47,7 @@ requirements:
     - jsonschema
     - ruamel_yaml
     - pyyaml
-    - openmdao=3.4.0
+    - openmdao
     - pytest
     - pyside2
     - mpi4py  # [not win]
