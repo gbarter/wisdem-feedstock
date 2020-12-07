@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
-  sha256: 9ecb0d3fd352dad08ae77da3e2f41e92f69e05a250cecf08417e8ee845b7be0e
+  sha256: ce7c9a5348afe467a16df335e3c9651c549471374c82c064188c0374119d11a9
 # Download the tar-ball and do: openssl sha256 file.tar.gz to update
   
 build:
-  number: 2
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   skip: true  # [py<35]
 
@@ -47,7 +47,7 @@ requirements:
     - jsonschema
     - ruamel_yaml
     - pyyaml
-    - openmdao
+    - openmdao=3.4.0
     - pytest
     - pyside2
     - mpi4py  # [not win]
@@ -63,7 +63,7 @@ test:
 
 about:
   home: https://www.nrel.gov/wind/systems-engineering-models-tools.html
-  license: Apache 2.0
+  license: Apache-2.0
   license_file: LICENSE.txt
   summary: Wind-Plant Integrated System Design and Engineering Model
   description: |
