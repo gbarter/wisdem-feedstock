@@ -3,82 +3,83 @@
 {% set name = "wisdem" %}
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+    name: {{ name|lower }}
+    version: {{ version }}
 
 source:
-  url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
-  sha256: ce7c9a5348afe467a16df335e3c9651c549471374c82c064188c0374119d11a9
+    url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
+    sha256: ce7c9a5348afe467a16df335e3c9651c549471374c82c064188c0374119d11a9
 # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  
+    
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
-  skip: true  # [py<35]
+    number: 1
+    script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+    skip: true    # [py<35]
 
 requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('m2w64_cxx') }}  # [win]
-    - make
-  host:
-    - libblas
-    - libcblas
-    - liblapack
-    - libpython  # [win]
-    - python
-    - pip
-    - numpy
-    - setuptools
-    - cython
-    - scipy
-  run:
-    - python
-    - numpy
-    - scipy
-    - pandas
-    - openpyxl
-    - xlrd
-    - cython
-    - swig
-    - jsonschema
-    - ruamel_yaml
-    - pyyaml
-    - openmdao
-    - pytest
-    - pyside2
-    - mpi4py  # [not win]
-    - petsc4py  # [not win]
-#    - geopy
-#    - matplotlib-base
-#    - six
-#    - numpydoc
+    build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ compiler('fortran') }}
+        - {{ compiler('m2w64_c') }}    # [win]
+        - {{ compiler('m2w64_cxx') }}    # [win]
+        - make
+    host:
+        - libblas
+        - libcblas
+        - liblapack
+        - libpython    # [win]
+        - python
+        - pip
+        - numpy
+        - setuptools
+        - cython
+        - scipy
+    run:
+        - python
+        - numpy
+        - scipy
+        - pandas
+        - openpyxl
+        - xlrd
+        - cython
+        - swig
+        - jsonschema
+        - ruamel_yaml
+        - pyyaml
+        - openmdao
+        - pytest
+        - pyside2
+#        - mpi4py    # [not win] # Fails on conda-forge linux, ask users to do separately
+#        - petsc4py    # [not win] # Fails on conda-forge linux, ask users to do separately
+#        - geopy
+#        - matplotlib-base
+#        - six
+#        - numpydoc
 
-test:
-  imports:
-    - wisdem
+#test:
+#    # Fails unless we create conda package for simpy, marmot-agents
+#    imports:
+#        - wisdem
 
 about:
-  home: https://www.nrel.gov/wind/systems-engineering-models-tools.html
-  license: Apache-2.0
-  license_file: LICENSE
-  summary: Wind-Plant Integrated System Design and Engineering Model
-  description: |
-    The Wind-Plant Integrated System Design and Engineering Model (WISDEM®) is a
-    set of models for assessing overall wind plant cost of energy (COE). The models
-    use wind turbine and plant cost and energy production as well as financial
-    models to estimate coe and other wind plant system attributes. It is built
-    in OpenMDAO.
-  doc_url: https://wisdem.readthedocs.io
-  dev_url: https://github.com/wisdem/wisdem
+    home: https://www.nrel.gov/wind/systems-engineering-models-tools.html
+    license: Apache-2.0
+    license_file: LICENSE
+    summary: Wind-Plant Integrated System Design and Engineering Model
+    description: |
+        The Wind-Plant Integrated System Design and Engineering Model (WISDEM®) is a
+        set of models for assessing overall wind plant cost of energy (COE). The models
+        use wind turbine and plant cost and energy production as well as financial
+        models to estimate coe and other wind plant system attributes. It is built
+        in OpenMDAO.
+    doc_url: https://wisdem.readthedocs.io
+    dev_url: https://github.com/wisdem/wisdem
 
 extra:
-  recipe-maintainers:
-    - jefalon
-    - ptrbortolotti
-    - gbarter
-    - johnjasa
-    
+    recipe-maintainers:
+        - jefalon
+        - ptrbortolotti
+        - gbarter
+        - johnjasa
+        
