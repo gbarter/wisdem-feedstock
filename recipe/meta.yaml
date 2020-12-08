@@ -31,7 +31,7 @@ requirements:
         - libpython    # [win]
         - python
         - pip
-        - numpy >=1.19
+        - numpy 1.19.*
         - setuptools
         - cython
         - scipy
