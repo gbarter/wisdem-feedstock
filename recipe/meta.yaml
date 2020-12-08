@@ -12,7 +12,7 @@ source:
     sha256: 75f03ce151d2b4d8dd163ad3fe9a15e99720f289f446e32d80211d230c119faf
     
 build:
-    number: 0
+    number: 1
     script: "{{ PYTHON }} -m pip install . --no-deps -vv"
     skip: true    # [py<35]
 
@@ -31,7 +31,7 @@ requirements:
         - libpython    # [win]
         - python
         - pip
-        - numpy
+        - numpy >=1.19
         - setuptools
         - cython
         - scipy
