@@ -1,5 +1,5 @@
-{% set release = "v3.0.3" %}
-{% set version = "3.0.3" %}
+{% set release = "v3.1.0" %}
+{% set version = "3.1.0" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,10 +9,10 @@ package:
 source:
     url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-    sha256: 75f03ce151d2b4d8dd163ad3fe9a15e99720f289f446e32d80211d230c119faf
+    sha256: 203ae9c886bb78999c1fd80bab728d2e07f74522dc4188aba34429527cdc7e26
     
 build:
-    number: 2
+    number: 0
     script: "{{ PYTHON }} -m pip install . --no-deps -vv"
     skip: true    # [py<37]
 
@@ -31,12 +31,12 @@ requirements:
         - libpython    # [win]
         - python
         - pip
-        - numpy 1.19.*
+        - numpy
         - setuptools
         - cython
-#        - scipy
     run:
         - python
+        # Putting regular numpy is 'host' section and pin_compatible here per conda-forge guidance
         - {{ pin_compatible('numpy') }}
         - scipy
         - pandas
@@ -53,9 +53,6 @@ requirements:
         - matplotlib-base
 #        - mpi4py    # [not win] # Fails on conda-forge linux, ask users to do separately
 #        - petsc4py    # [not win] # Fails on conda-forge linux, ask users to do separately
-#        - geopy
-#        - six
-#        - numpydoc
 
 test:
     # Fails unless we create conda package for simpy, marmot-agents
@@ -78,7 +75,6 @@ about:
 
 extra:
     recipe-maintainers:
-        - jefalon
         - ptrbortolotti
         - gbarter
         - johnjasa
