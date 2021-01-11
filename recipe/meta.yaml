@@ -1,5 +1,5 @@
-{% set release = "v3.1.0" %}
-{% set version = "3.1.0" %}
+{% set release = "v3.2.0" %}
+{% set version = "3.2.0" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,10 +9,10 @@ package:
 source:
     url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-    sha256: 203ae9c886bb78999c1fd80bab728d2e07f74522dc4188aba34429527cdc7e26
+    sha256: 8e9185813a977c1bfa7bd47f0038aea15ec7298050bfd41db49c72403478ba56
     
 build:
-    number: 1
+    number: 0
     script: "{{ PYTHON }} -m pip install . --no-deps -vv"
     skip: true    # [py<37]
 
@@ -38,19 +38,19 @@ requirements:
         - python
         # Putting regular numpy is 'host' section and pin_compatible here per conda-forge guidance
         - {{ pin_compatible('numpy') }}
-        - scipy
-        - pandas
-        - openpyxl
-        - xlrd
         - cython
-        - swig
         - jsonschema
-        - ruamel_yaml
-        - pyyaml
-        - openmdao
-        - pytest
-        - pyside2
         - matplotlib-base
+        - openmdao
+        - openpyxl
+        - pandas
+        - pyside2
+        - pytest
+        - pyyaml
+        - ruamel_yaml
+        - scipy
+        - sortedcontainers
+        - swig
 #        - mpi4py    # [not win] # Fails on conda-forge linux, ask users to do separately
 #        - petsc4py    # [not win] # Fails on conda-forge linux, ask users to do separately
 
@@ -60,7 +60,7 @@ test:
         - wisdem
 
 about:
-    home: https://www.nrel.gov/wind/systems-engineering-models-tools.html
+    home: https://wisdem.readthedocs.io
     license: Apache-2.0
     license_file: LICENSE
     summary: Wind-Plant Integrated System Design and Engineering Model
@@ -68,8 +68,8 @@ about:
         The Wind-Plant Integrated System Design and Engineering Model (WISDEM®) is a
         set of models for assessing overall wind plant cost of energy (COE). The models
         use wind turbine and plant cost and energy production as well as financial
-        models to estimate coe and other wind plant system attributes. It is built
-        in OpenMDAO.
+        models to estimate coe and other wind plant system attributes. WISDEM is developed by
+        the National Renewable Energy Lab, on top of NASA's OpenMDAO library.
     doc_url: https://wisdem.readthedocs.io
     dev_url: https://github.com/wisdem/wisdem
 

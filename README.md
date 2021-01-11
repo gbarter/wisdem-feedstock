@@ -1,7 +1,7 @@
 About wisdem
 ============
 
-Home: https://www.nrel.gov/wind/systems-engineering-models-tools.html
+Home: https://wisdem.readthedocs.io
 
 Package license: Apache-2.0
 
@@ -16,8 +16,8 @@ Documentation: https://wisdem.readthedocs.io
 The Wind-Plant Integrated System Design and Engineering Model (WISDEM®) is a
 set of models for assessing overall wind plant cost of energy (COE). The models
 use wind turbine and plant cost and energy production as well as financial
-models to estimate coe and other wind plant system attributes. It is built
-in OpenMDAO.
+models to estimate coe and other wind plant system attributes. WISDEM is developed by
+the National Renewable Energy Lab, on top of NASA's OpenMDAO library.
 
 
 Current build status
