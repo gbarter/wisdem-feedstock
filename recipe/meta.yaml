@@ -1,5 +1,5 @@
-{% set release = "v3.2.0" %}
-{% set version = "3.2.0" %}
+{% set release = "v3.3.1" %}
+{% set version = "3.3.1" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,7 +9,7 @@ package:
 source:
     url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-    sha256: 8e9185813a977c1bfa7bd47f0038aea15ec7298050bfd41db49c72403478ba56
+    sha256: 1d0cc1051b580638611c7778b54451849776d26badb5a6e50801bd056284d0c5
     
 build:
     number: 0
@@ -19,10 +19,10 @@ build:
 requirements:
     build:
         - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
+#        - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - {{ compiler('m2w64_c') }}    # [win]
-        - {{ compiler('m2w64_cxx') }}    # [win]
+#        - {{ compiler('m2w64_cxx') }}    # [win]
         - make
     host:
         - libblas
@@ -36,23 +36,23 @@ requirements:
         - cython
     run:
         - python
-        # Putting regular numpy is 'host' section and pin_compatible here per conda-forge guidance
+        # Putting regular numpy in 'host' section and pin_compatible here per conda-forge guidance
         - {{ pin_compatible('numpy') }}
         - cython
         - jsonschema
         - matplotlib-base
+        - nlopt
         - openmdao
         - openpyxl
         - pandas
         - pyside2
         - pytest
+        - python-benedict
         - pyyaml
         - ruamel_yaml
         - scipy
         - sortedcontainers
         - swig
-#        - mpi4py    # [not win] # Fails on conda-forge linux, ask users to do separately
-#        - petsc4py    # [not win] # Fails on conda-forge linux, ask users to do separately
 
 test:
     # Fails unless we create conda package for simpy, marmot-agents

@@ -1,27 +1,27 @@
 c_compiler:
-- vs2017
+- gcc
+c_compiler_version:
+- '9'
+cdt_name:
+- cos6
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-cxx_compiler:
-- vs2017
+docker_image:
+- quay.io/condaforge/linux-anvil-comp7
 fortran_compiler:
-- flang
+- gfortran
 fortran_compiler_version:
-- '5'
+- '9'
 libblas:
 - 3.8 *netlib
 libcblas:
 - 3.8 *netlib
 liblapack:
 - 3.8 *netlib
-m2w64_c_compiler:
-- m2w64-toolchain
-m2w64_cxx_compiler:
-- m2w64-toolchain
 numpy:
-- '1.16'
+- '1.17'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -29,7 +29,11 @@ pin_run_as_build:
 python:
 - 3.7.* *_cpython
 target_platform:
-- win-64
+- linux-64
 zip_keys:
+- - c_compiler_version
+  - fortran_compiler_version
+- - cdt_name
+  - docker_image
 - - python
   - numpy
