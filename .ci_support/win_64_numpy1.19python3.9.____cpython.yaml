@@ -4,8 +4,6 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-cxx_compiler:
-- vs2017
 fortran_compiler:
 - flang
 fortran_compiler_version:
@@ -17,8 +15,6 @@ libcblas:
 liblapack:
 - 3.8 *netlib
 m2w64_c_compiler:
-- m2w64-toolchain
-m2w64_cxx_compiler:
 - m2w64-toolchain
 numpy:
 - '1.19'
