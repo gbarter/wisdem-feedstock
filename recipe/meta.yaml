@@ -1,5 +1,5 @@
-{% set release = "v3.3.0" %}
-{% set version = "3.3.0" %}
+{% set release = "v3.3.1" %}
+{% set version = "3.3.1" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,7 +9,7 @@ package:
 source:
     url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-    sha256: 187dc3137b3ef2a5271077cea3a2f023c2daa547373b3f87e4ca6eca7db08725
+    sha256: 1d0cc1051b580638611c7778b54451849776d26badb5a6e50801bd056284d0c5
     
 build:
     number: 0
@@ -53,8 +53,6 @@ requirements:
         - scipy
         - sortedcontainers
         - swig
-        - mpi4py
-#        - petsc4py    # [not win] # Fails on conda-forge linux, ask users to do separately
 
 test:
     # Fails unless we create conda package for simpy, marmot-agents
