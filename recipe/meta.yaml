@@ -32,7 +32,7 @@ requirements:
         - python
         - pip
         - numpy
-        - setuptools
+        - setuptools==58.4.0
         - cython
     run:
         - python
