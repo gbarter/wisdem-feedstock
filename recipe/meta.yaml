@@ -45,7 +45,7 @@ requirements:
         - openmdao
         - openpyxl
         - pandas
-        - pyoptsparse # [not win]
+        - pyoptsparse   # [not win]
         - pyside2
         - pytest
         - python-benedict
