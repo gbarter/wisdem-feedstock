@@ -1,5 +1,5 @@
-{% set release = "v3.5.1" %}
-{% set version = "3.5.1" %}
+{% set release = "v3.6" %}
+{% set version = "3.6" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,7 +9,7 @@ package:
 source:
     url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-    sha256: fdd5232f992c3779f7bc50fa4e5e2661ae04f5fb5add543cdc8fb299ec66de55
+    sha256: 31f8cbc26c25543f8fd2676fa3a57bf5f7bb229ab2d15d8589d777f0d12f5c21
     
 build:
     number: 0
@@ -42,7 +42,7 @@ requirements:
         - jsonschema
         - matplotlib-base
         - nlopt
-        - openmdao
+        - openmdao>=3.18
         - openpyxl
         - pandas
         - pyoptsparse   # [not win]
@@ -54,6 +54,7 @@ requirements:
         - scipy
         - simpy
         - sortedcontainers
+        - statsmodels
         - swig
         # DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
         
