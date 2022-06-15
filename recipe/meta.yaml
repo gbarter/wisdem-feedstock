@@ -42,7 +42,7 @@ requirements:
         - jsonschema
         - matplotlib-base
         - nlopt
-        - openmdao>=3.18
+        - openmdao >=3.18
         - openpyxl
         - pandas
         - pyoptsparse   # [not win]
