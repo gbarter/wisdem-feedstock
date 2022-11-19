@@ -1,5 +1,5 @@
-{% set release = "v3.6.1" %}
-{% set version = "3.6.1" %}
+{% set release = "v3.7" %}
+{% set version = "3.7" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,10 +9,10 @@ package:
 source:
     url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-    sha256: c378331beffdb3717b7991a818eb11dd3f4c296628266883110a31cd07479d5f
+    sha256: bb758f125c894dbeb5da804bcfb5e3ffb61ba1c88ea2f85d4bd8befc724f0340
     
 build:
-    number: 2
+    number: 0
     script: "{{ PYTHON }} -m pip install . --no-deps -vv"
     skip: true    # [py<37]
 
@@ -32,7 +32,7 @@ requirements:
         - python
         - pip
         - numpy
-        - setuptools
+        - setuptools <60.0
         - cython
     run:
         - python
@@ -45,7 +45,7 @@ requirements:
         - openmdao >=3.18
         - openpyxl
         - pandas
-        - pyoptsparse   # [not win]
+        - pyoptsparse
         - pyside2
         - pytest
         - python-benedict
