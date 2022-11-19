@@ -3,83 +3,82 @@
 {% set name = "wisdem" %}
 
 package:
-    name: {{ name|lower }}
-    version: {{ version }}
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-    url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
+  url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-    sha256: bb758f125c894dbeb5da804bcfb5e3ffb61ba1c88ea2f85d4bd8befc724f0340
-    
+  sha256: bb758f125c894dbeb5da804bcfb5e3ffb61ba1c88ea2f85d4bd8befc724f0340
+
 build:
-    number: 0
-    script: "{{ PYTHON }} -m pip install . --no-deps -vv"
-    skip: true    # [py<37]
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  skip: true  # [py<37]
 
 requirements:
-    build:
-        - {{ compiler('c') }}
+  build:
+    - {{ compiler('c') }}
 #        - {{ compiler('cxx') }}
-        - {{ compiler('fortran') }}
-        - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('fortran') }}
+    - {{ compiler('m2w64_c') }}        # [win]
 #        - {{ compiler('m2w64_cxx') }}    # [win]
-        - make
-    host:
-        - libblas
-        - libcblas
-        - liblapack
-        - libpython    # [win]
-        - python
-        - pip
-        - numpy
-        - setuptools <60.0
-        - cython
-    run:
-        - python
+    - make
+  host:
+    - libblas
+    - libcblas
+    - liblapack
+    - libpython        # [win]
+    - python
+    - pip
+    - numpy
+    - setuptools <60.0
+    - cython
+  run:
+    - python
         # Putting regular numpy in 'host' section and pin_compatible here per conda-forge guidance
-        - {{ pin_compatible('numpy') }}
-        - cython
-        - jsonschema
-        - matplotlib-base
-        - nlopt
-        - openmdao >=3.18
-        - openpyxl
-        - pandas
-        - pyoptsparse
-        - pyside2
-        - pytest
-        - python-benedict
-        - pyyaml
-        - ruamel_yaml
-        - scipy
-        - simpy
-        - sortedcontainers
-        - statsmodels
-        - swig
+    - {{ pin_compatible('numpy') }}
+    - cython
+    - jsonschema
+    - matplotlib-base
+    - nlopt
+    - openmdao >=3.18
+    - openpyxl
+    - pandas
+    - pyoptsparse
+    - pyside2
+    - pytest
+    - python-benedict
+    - pyyaml
+    - ruamel_yaml
+    - scipy
+    - simpy
+    - sortedcontainers
+    - statsmodels
+    - swig
         # DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
-        
 test:
     # Fails unless we create conda package for simpy, marmot-agents
-    imports:
-        - wisdem
+  imports:
+    - wisdem
 
 about:
-    home: https://wisdem.readthedocs.io
-    license: Apache-2.0
-    license_file: LICENSE
-    summary: Wind-Plant Integrated System Design and Engineering Model
-    description: |
-        The Wind-Plant Integrated System Design and Engineering Model (WISDEM®) is a
-        set of models for assessing overall wind plant cost of energy (COE). The models
-        use wind turbine and plant cost and energy production as well as financial
-        models to estimate coe and other wind plant system attributes. WISDEM is developed by
-        the National Renewable Energy Lab, on top of NASA's OpenMDAO library.
-    doc_url: https://wisdem.readthedocs.io
-    dev_url: https://github.com/wisdem/wisdem
+  home: https://wisdem.readthedocs.io
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Wind-Plant Integrated System Design and Engineering Model
+  description: |
+    The Wind-Plant Integrated System Design and Engineering Model (WISDEM®) is a
+    set of models for assessing overall wind plant cost of energy (COE). The models
+    use wind turbine and plant cost and energy production as well as financial
+    models to estimate coe and other wind plant system attributes. WISDEM is developed by
+    the National Renewable Energy Lab, on top of NASA's OpenMDAO library.
+  doc_url: https://wisdem.readthedocs.io
+  dev_url: https://github.com/wisdem/wisdem
 
 extra:
-    recipe-maintainers:
-        - ptrbortolotti
-        - gbarter
-        - johnjasa
-        
+  recipe-maintainers:
+    - ptrbortolotti
+    - gbarter
+    - johnjasa
+
