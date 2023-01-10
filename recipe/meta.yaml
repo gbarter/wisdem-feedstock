@@ -1,5 +1,5 @@
-{% set release = "v3.8.4" %}
-{% set version = "3.8.4" %}
+{% set release = "v3.8.5" %}
+{% set version = "3.8.5" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,7 +9,7 @@ package:
 source:
   url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: ca9ffb0724ebc06aaab17c87b33a669a84278fd6a221bbb4b0d1e617cdacf524
+  sha256: 2a92c7139afb765a38ad262575aca1136ac18a3bebf5f3a5832407807e2f588e
 
 build:
   number: 0
