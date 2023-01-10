@@ -35,5 +35,5 @@ export MESON_ARGS="-Dincdir_numpy=${NP_INC} -Dpython_target=${PYTHON} ${EXTRA_FL
 # see https://packaging.python.org/en/latest/tutorials/packaging-projects/
 #python -m build -n -x .
 #pip install --prefix "${PREFIX}" --no-deps --no-index --find-links dist wisdem
-$PYTHON setup.py install --single-version-externally-managed
+$PYTHON setup.py install --single-version-externally-managed --record=record.txt
 
