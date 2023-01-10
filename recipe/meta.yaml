@@ -1,5 +1,5 @@
-{% set release = "v3.7" %}
-{% set version = "3.7" %}
+{% set release = "v3.8" %}
+{% set version = "3.8" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,7 +9,7 @@ package:
 source:
   url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: bb758f125c894dbeb5da804bcfb5e3ffb61ba1c88ea2f85d4bd8befc724f0340
+  sha256: bc426daf713c24cf610842c88d30ad9dac6863071cc5c8def19902e8b2281c43
 
 build:
   number: 0
@@ -19,35 +19,34 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-#        - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - {{ compiler('m2w64_c') }}        # [win]
-#        - {{ compiler('m2w64_cxx') }}    # [win]
     - make
+    - meson
+    - ninja
   host:
-    - libblas
-    - libcblas
-    - liblapack
+    - openblas
     - libpython        # [win]
     - python
     - pip
     - numpy
-    - setuptools <60.0
+    - setuptools
     - cython
   run:
-    - python
-        # Putting regular numpy in 'host' section and pin_compatible here per conda-forge guidance
-    - {{ pin_compatible('numpy') }}
+    # DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
+    # Putting numpy in 'host' section and pin_compatible here per conda-forge guidance
     - cython
     - jsonschema
     - matplotlib-base
     - nlopt
+    - {{ pin_compatible('numpy') }}
     - openmdao >=3.18
     - openpyxl
     - pandas
+    - pydoe2
     - pyoptsparse
-    - pyside2
     - pytest
+    - python
     - python-benedict
     - pyyaml
     - ruamel_yaml
@@ -56,11 +55,16 @@ requirements:
     - sortedcontainers
     - statsmodels
     - swig
-        # DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
+    
 test:
-    # Fails unless we create conda package for simpy, marmot-agents
   imports:
     - wisdem
+  requires:
+      pytest
+  commands:
+      pip check
+  commands:
+      pytest wisdem/test/test_gluecode
 
 about:
   home: https://wisdem.readthedocs.io
@@ -80,4 +84,4 @@ extra:
   recipe-maintainers:
     - ptrbortolotti
     - gbarter
-    - johnjasa
+
