@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
-  skip: true  # [py<37]
+  skip: true  # [py<38]
 
 requirements:
   build:
@@ -25,7 +25,8 @@ requirements:
     - meson
     - ninja
   host:
-    - openblas
+    - libblas
+    - liblapack
     - libpython        # [win]
     - python
     - pip
@@ -33,8 +34,6 @@ requirements:
     - setuptools
     - cython
   run:
-    # DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
-    # Putting numpy in 'host' section and pin_compatible here per conda-forge guidance
     - cython
     - jsonschema
     - matplotlib-base
@@ -55,16 +54,18 @@ requirements:
     - sortedcontainers
     - statsmodels
     - swig
+
+# DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
+# Putting numpy in 'host' section and pin_compatible in run per conda-forge guidance
     
 test:
   imports:
     - wisdem
   requires:
-      pytest
+      - pytest
   commands:
-      pip check
-  commands:
-      pytest wisdem/test/test_gluecode
+      - pip check
+      - pytest wisdem/test/test_gluecode
 
 about:
   home: https://wisdem.readthedocs.io
