@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   skip: true  # [py<38]
-  #script: {{ PYTHON }} -m pip install . --no-deps -vv
+  #script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -25,9 +25,7 @@ requirements:
     - meson
     - ninja
     - numpy
-    - pip
     - pkg-config
-    - python
     - python-build
   host:
     - libblas
