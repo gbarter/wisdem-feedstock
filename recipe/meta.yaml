@@ -18,12 +18,17 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - {{ compiler('c') }}         # [not win]
     - {{ compiler('fortran') }}
-    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('m2w64_c') }}   # [win]
     - make
     - meson
     - ninja
+    - numpy
+    - pip
+    - pkg_config
+    - python
+    - python-build
   host:
     - libblas
     - liblapack
@@ -62,6 +67,7 @@ test:
   imports:
     - wisdem
   requires:
+      - pip
       - pytest
   commands:
       - pip check
