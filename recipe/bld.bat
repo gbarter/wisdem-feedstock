@@ -9,4 +9,4 @@ REM set CC_LD=link
 REM See the unix build.sh for more details on the build process below.
 set MESON_ARGS=-Dincdir_numpy=%NP_INC% -Dpython_target=%PYTHON% %EXTRA_FLAGS%
 python -m build -n -x .
-pip install --prefix "%PREFIX%" --no-deps --no-index --find-links dist pyoptsparse
+pip install --prefix "%PREFIX%" --no-deps --no-index --find-links dist wisdem
