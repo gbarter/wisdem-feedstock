@@ -14,9 +14,13 @@ source:
 build:
   number: 0
   skip: true  # [py<38]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
-  #script: {{ PYTHON }} setup.py install
-
+  #script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
+  always_include_files:
+    - "wisdem/ccblade/_bem*"
+    - "wisdem/rotorse/_precomp*"
+    - "wisdem/pyframe3dd/_pyframe3dd*"
+    
 requirements:
   build:
     - {{ compiler('c') }}         # [not win]
