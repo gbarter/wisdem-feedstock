@@ -27,7 +27,7 @@ requirements:
     - ninja
     - numpy
     - pkg-config
-    - python-build
+    - python
   host:
     - libblas
     - liblapack
