@@ -15,7 +15,7 @@ build:
   number: 0
   skip: true  # [py<38]
   #script: {{ PYTHON }} -m pip install . --no-deps -vv
-  #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
+  script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
     
 requirements:
   build:
