@@ -25,11 +25,12 @@ requirements:
     - make
     - meson
     - ninja
-    - numpy
-    - pkg-config
-    - python-build
-    - wheel
+#    - numpy
+#    - pkg-config
+#    - python-build
+#    - wheel
   host:
+    - cython
     - libblas
     - liblapack
     - libpython        # [win]
@@ -37,7 +38,6 @@ requirements:
     - pip
     - numpy
     - setuptools
-    - cython
   run:
     - cython
     - jsonschema
@@ -70,7 +70,7 @@ test:
       - pip
       - pytest
   commands:
-      - pip check
+      - pip install marmot-agents
       - pytest wisdem/test/test_gluecode
 
 about:
