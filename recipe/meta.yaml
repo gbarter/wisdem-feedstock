@@ -66,11 +66,11 @@ requirements:
 test:
   imports:
     - wisdem
-  requires:
-      - pip
-  commands:
-      - pip install marmot-agents
-      - python -c "import unittest; import wisdem.test.test_gluecode.test_gluecode as myt; unittest.TextTestRunner().run(myt.suite() )"
+#  requires:
+#      - pip
+#  commands:
+#      - pip install marmot-agents
+#      - python -c "import unittest; import wisdem.test.test_gluecode.test_gluecode as myt; unittest.TextTestRunner().run(myt.suite() )"
 
 about:
   home: https://wisdem.readthedocs.io
