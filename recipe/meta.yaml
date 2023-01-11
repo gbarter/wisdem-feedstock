@@ -28,6 +28,7 @@ requirements:
     - numpy
     - pkg-config
     - python-build
+    - wheel
   host:
     - libblas
     - liblapack
@@ -37,7 +38,6 @@ requirements:
     - numpy
     - setuptools
     - cython
-    - wheel
   run:
     - cython
     - jsonschema
