@@ -68,10 +68,9 @@ test:
     - wisdem
   requires:
       - pip
-      - pytest
   commands:
       - pip install marmot-agents
-      - pytest wisdem/test/test_gluecode
+      - python -c "import unittest; import wisdem.test.test_gluecode.test_gluecode as myt; unittest.TextTestRunner().run(myt.suite() )"
 
 about:
   home: https://wisdem.readthedocs.io
