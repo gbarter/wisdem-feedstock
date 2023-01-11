@@ -15,7 +15,7 @@ build:
   number: 0
   skip: true  # [py<38]
   #script: {{ PYTHON }} -m pip install . --no-deps -vv
-  script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
+  #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
     
 requirements:
   build:
@@ -26,9 +26,9 @@ requirements:
     - meson
     - ninja
     - numpy
-#    - pkg-config
-#    - python-build
-#    - wheel
+    - pkg-config
+    - python-build
+    - wheel
   host:
     - cython
 #    - libblas
@@ -58,7 +58,7 @@ requirements:
     - simpy
     - sortedcontainers
     - statsmodels
-    - swig
+#    - swig
 
 # DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
 # Putting numpy in 'host' section and pin_compatible in run per conda-forge guidance

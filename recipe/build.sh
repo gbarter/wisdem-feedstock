@@ -8,6 +8,10 @@ EXTRA_FLAGS=""
 NP_INC="${SP_DIR}/numpy/core/include/"
 echo "PYTHON TARGET=${PYTHON}"
 
+if [ `uname` == Darwin ]; then
+    export  LDFLAGS="$LDFLAGS  -Wl,-flat_namespace,-undefined,suppress"
+fi
+
 if [[ $CONDA_BUILD_CROSS_COMPILATION == "1" ]]; then
   # Add pkg-config to cross-file binaries since meson will disable it
   # See https://github.com/mesonbuild/meson/issues/7276
