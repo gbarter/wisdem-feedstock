@@ -31,15 +31,15 @@ requirements:
 #    - wheel
   host:
     - cython
-    - libblas
-    - liblapack
+#    - libblas
+#    - liblapack
     - libpython        # [win]
     - python
     - pip
     - numpy
     - setuptools
   run:
-    - cython
+#    - cython
     - jsonschema
     - matplotlib-base
     - nlopt
