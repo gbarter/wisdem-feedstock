@@ -37,6 +37,7 @@ requirements:
     - numpy
     - setuptools
     - cython
+    - wheel
   run:
     - cython
     - jsonschema
