@@ -27,6 +27,7 @@ requirements:
     - ninja
     - numpy
     - pkg-config
+    - python
     - python-build
     - wheel
   host:
@@ -35,6 +36,7 @@ requirements:
 #    - liblapack
     - libpython        # [win]
     - python
+    - python-build
     - pip
     - numpy
     - setuptools
