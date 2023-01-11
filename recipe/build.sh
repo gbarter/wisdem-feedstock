@@ -33,7 +33,7 @@ export MESON_ARGS="-Dincdir_numpy=${NP_INC} -Dpython_target=${PYTHON} ${EXTRA_FL
 # artifacts where pip install . can't find them. Here we explicitly build the wheel into the working director, wherever that is
 # and then tell pip to install the wheel in the working directory. Also, python -m build is now the recommended way to build
 # see https://packaging.python.org/en/latest/tutorials/packaging-projects/
-python -m build -n -x .
-$PYTHON -m pip install --prefix "${PREFIX}" --no-deps --no-index --find-links dist wisdem
+python -m build -n -x -w .
+$PYTHON -m pip install --prefix "${PREFIX}" --no-deps dist/*.whl
 #$PYTHON setup.py install --single-version-externally-managed --record=record.txt
 
