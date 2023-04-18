@@ -17,7 +17,6 @@ build:
   # The scripts build okay, but don't get the compiled libraries in the package
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
-    
 requirements:
   build:
     - {{ compiler('c') }}         # [not win]
@@ -67,7 +66,6 @@ requirements:
 
 # DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
 # Putting numpy in 'host' section and pin_compatible in run per conda-forge guidance
-    
 test:
   imports:
     - wisdem
