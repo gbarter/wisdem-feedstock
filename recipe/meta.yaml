@@ -14,7 +14,8 @@ source:
 build:
   number: 0
   skip: true  # [py<39]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  # The scripts build okay, but don't get the compiled libraries in the package
+  #script: {{ PYTHON }} -m pip install . --no-deps -vv
   #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
     
 requirements:
