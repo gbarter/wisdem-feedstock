@@ -40,4 +40,4 @@ export MESON_ARGS="-Dincdir_numpy=${NP_INC} -Dpython_target=${PYTHON} ${EXTRA_FL
 python -m build -n -x -w .
 $PYTHON -m pip install --prefix "${PREFIX}" --no-deps dist/*.whl
 #$PYTHON setup.py install --single-version-externally-managed --record=record.txt
-
+#pip install --prefix "${PREFIX}" --no-deps --no-index --find-links dist pyoptsparse
