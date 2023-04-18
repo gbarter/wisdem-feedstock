@@ -10,6 +10,6 @@ REM See the unix build.sh for more details on the build process below.
 set MESON_ARGS=-Dincdir_numpy=%NP_INC% -Dpython_target=%PYTHON% %EXTRA_FLAGS%
 
 python -m build -n -x -w .
-%PYTHON% -m pip install --prefix "%PREFIX%" --no-deps dist/WISDEM-3.9-py3-none-any.whl
+%PYTHON% -m pip install --prefix "%PREFIX%" --no-deps dist/wisdem-3.9-py3-none-any.whl
 REM %PYTHON% setup.py install --single-version-externally-managed --record=record.txt
 REM pip install --prefix "%PREFIX%" --no-deps --no-index --find-links dist pyoptsparse
