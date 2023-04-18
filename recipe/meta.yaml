@@ -1,5 +1,5 @@
-{% set release = "v3.8.7" %}
-{% set version = "3.8.7" %}
+{% set release = "v3.9.1" %}
+{% set version = "3.9.1" %}
 {% set name = "wisdem" %}
 
 package:
@@ -9,12 +9,13 @@ package:
 source:
   url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: 8ad987002966755ea52a90b37ebbaae6e04685cea9954303f5709c09e659b72c
+  sha256: aa2a8a3c138cf868bdb6012166ce4d611f519f4c41ecef224ae74de7ac7e2548
 
 build:
   number: 0
-  skip: true  # [py<38]
-  #script: {{ PYTHON }} -m pip install . --no-deps -vv
+  skip: true  # [py<39]
+  # The scripts build okay, but don't get the compiled libraries in the package
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
     
 requirements:
@@ -22,10 +23,12 @@ requirements:
     - {{ compiler('c') }}         # [not win]
     - {{ compiler('fortran') }}
     - {{ compiler('m2w64_c') }}   # [win]
+    - cross-python_{{ target_platform }}      # [build_platform != target_platform]
     - make
     - meson
     - ninja
     - numpy
+    - pip
     - pkg-config
     - python
     - python-build
