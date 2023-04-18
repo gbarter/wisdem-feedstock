@@ -1,27 +1,31 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
+c_compiler:
+- clang
+c_compiler_version:
+- '14'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 fortran_compiler:
-- flang
+- gfortran
 fortran_compiler_version:
-- '5'
-libblas:
-- 3.9 *netlib
-liblapack:
-- 3.9 *netlib
-m2w64_c_compiler:
-- m2w64-toolchain
+- '11'
+macos_machine:
+- arm64-apple-darwin20.0.0
 numpy:
-- '1.20'
+- '1.21'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.9.* *_cpython
 target_platform:
-- win-64
+- osx-arm64
 zip_keys:
+- - c_compiler_version
+  - fortran_compiler_version
 - - python
   - numpy
