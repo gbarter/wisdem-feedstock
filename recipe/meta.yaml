@@ -2,6 +2,9 @@
 {% set version = "3.9.1" %}
 {% set name = "wisdem" %}
 
+# ensure mpi is defined (needed for conda-smithy recipe-lint)
+{% set mpi = mpi or 'nompi' %}
+
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -14,7 +17,6 @@ source:
 build:
   number: 0
   skip: true  # [py<39]
-  # The scripts build okay, but don't get the compiled libraries in the package
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
     
@@ -43,6 +45,7 @@ requirements:
     - pip
     - numpy
     - setuptools
+    - {{ mpi }}  # [mpi != 'nompi']
   run:
 #    - cython
     - jsonschema
@@ -63,9 +66,8 @@ requirements:
     - simpy
     - sortedcontainers
     - statsmodels
-#    - swig
-
-# DO NOT ADD MPI- it breaks the conda build.  Users have to add it afterwards
+    - {{ mpi }}  # [mpi != 'nompi']    
+# MPI now supported!
 # Putting numpy in 'host' section and pin_compatible in run per conda-forge guidance
     
 test:
