@@ -1,5 +1,5 @@
-{% set release = "v3.9.1" %}
-{% set version = "3.9.1" %}
+{% set release = "v3.10.0" %}
+{% set version = "3.10.0" %}
 {% set name = "wisdem" %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
@@ -12,7 +12,7 @@ package:
 source:
   url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: aa2a8a3c138cf868bdb6012166ce4d611f519f4c41ecef224ae74de7ac7e2548
+  sha256: 11b3c599c861dbf465575f5e863796353b91c9ac285eb40c80f07bf3e9c103c0
 
 build:
   number: 0
