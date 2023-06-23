@@ -11,6 +11,15 @@
 # prioritize nompi variant via build number
 {% set build = build + 100 %}
 {% endif %}
+  
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
+    # Download the tar-ball and do: openssl sha256 file.tar.gz to update
+  sha256: a1e686d3ef692424fd96291cea26273f1537da7dd40727e8b838538a6605baa3
 
 build:
   number: {{ build }}
@@ -36,15 +45,6 @@ build:
   skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
-  
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
-    # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: a1e686d3ef692424fd96291cea26273f1537da7dd40727e8b838538a6605baa3
 
 requirements:
   build:
