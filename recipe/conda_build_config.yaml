@@ -1,6 +1,6 @@
 # mpich doesn't seem to work on windows
 mpi:
   - nompi
-  - mpich        # [not win]
   - openmpi
+#  - mpich        # [not win]
   
