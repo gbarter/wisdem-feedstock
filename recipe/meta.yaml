@@ -1,4 +1,4 @@
-{% set version = "3.11.0" %}
+{% set version = "3.11.1" %}
 {% set name = "wisdem" %}
 {% set build = 0 %}
 
@@ -10,7 +10,6 @@
 # prioritize nompi variant via build number
 {% set build = build + 100 %}
 {% endif %}
-  
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -18,7 +17,7 @@ package:
 source:
   url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: 101fe32b06497e0ad20fd50f229bdb0a7fc6a4e5b4cf8b4c1eb197f92d72a48f
+  sha256: 753d5f7bb6b169d77816d3bfe631827be0f3d227679e4d15f3a5e3c0fd3542b2
 
 build:
   number: {{ build }}
@@ -43,9 +42,9 @@ build:
 
   skip: true  # [py<39]
   script:
-      - {{ PYTHON }} -m pip install . --no-deps -vv
-      - rm -rf {{ SP_DIR }}/meson_build       # [not win]
-      - rmdir /s /q {{ SP_DIR }}\meson_build  # [win]
+    - {{ PYTHON }} -m pip install . --no-deps -vv
+    - rm -rf {{ SP_DIR }}/meson_build         # [not win]
+    - rmdir /s /q {{ SP_DIR }}\meson_build    # [win]
   #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
