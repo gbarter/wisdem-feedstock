@@ -1,5 +1,4 @@
-{% set release = "v3.10.1" %}
-{% set version = "3.10.1" %}
+{% set version = "3.11.0" %}
 {% set name = "wisdem" %}
 {% set build = 0 %}
 
@@ -17,9 +16,9 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/WISDEM/WISDEM/archive/{{ release }}.tar.gz
+  url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: a1e686d3ef692424fd96291cea26273f1537da7dd40727e8b838538a6605baa3
+  sha256: 101fe32b06497e0ad20fd50f229bdb0a7fc6a4e5b4cf8b4c1eb197f92d72a48f
 
 build:
   number: {{ build }}
@@ -43,7 +42,10 @@ build:
   {% endif %}
 
   skip: true  # [py<39]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script:
+      - {{ PYTHON }} -m pip install . --no-deps -vv
+      - rm -rf {{ SP_DIR }}/meson_build       # [not win]
+      - rmdir /s /q {{ SP_DIR }}\meson_build  # [win]
   #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
@@ -76,6 +78,7 @@ requirements:
 #    - cython
     - jsonschema
     - matplotlib-base
+    - moorpy
     - nlopt
     - {{ pin_compatible('numpy') }}
     - openmdao >=3.18
