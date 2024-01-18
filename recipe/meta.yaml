@@ -1,6 +1,6 @@
 {% set version = "3.12.0" %}
 {% set name = "wisdem" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 # MPI now supported! https://conda-forge.org/docs/maintainer/knowledge_base.html#message-passing-interface-mpi
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
@@ -18,7 +18,9 @@ source:
   url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
   sha256: 8930a03f5d5bfa0499d742b03f86bbd0cc883c75dd9bc11e342468cc7a2b9f8f
-
+  patches:
+      - meson_files.patch
+      
 build:
   number: {{ build }}
 
@@ -41,11 +43,10 @@ build:
   {% endif %}
 
   skip: true  # [py<39]
-  script:
-    - {{ PYTHON }} -m pip install . --no-deps -vv
-    - rm -rf {{ SP_DIR }}/meson_build         # [not win]
-    - rmdir /s /q {{ SP_DIR }}\meson_build    # [win]
-  #script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
+  #script:
+  #  - {{ PYTHON }} -m pip install . --no-deps -vv
+  #  - rm -rf {{ SP_DIR }}/meson_build         # [not win]
+  #  - rmdir /s /q {{ SP_DIR }}\meson_build    # [win]
 
 requirements:
   build:
