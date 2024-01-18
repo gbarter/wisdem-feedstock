@@ -18,7 +18,7 @@ echo "python = '${PREFIX}/bin/python'" >> ${CONDA_PREFIX}/meson_cross_file.txt
 MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"
 
 # -wnx flags mean: --wheel --no-isolation --skip-dependency-check
-$PYTHON -m build -w -n -x -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=} || (cat build/meson-logs/meson-log.txt && exit 1)
+$PYTHON -m build -w -n -x -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=} || (cat meson_build/meson-logs/meson-log.txt && exit 1)
 
 $PYTHON -m pip install dist/py*.whl
 bin/rm -rf ${SP_DIR}/meson_build
