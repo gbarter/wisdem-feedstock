@@ -36,30 +36,3 @@ index a768c27b..3b93898c 100644
 +#    on the user's system which is run using the system Python installation, but the user may want build PyOptSparse for
 +#    a Python installation in a virtual environment. Leave as an empty string to build for Python installation running
 +#    Meson.''')
-diff --git a/wisdem/meson.build b/wisdem/meson.build
-index c4999da6..713d3ac9 100644
---- a/wisdem/meson.build
-+++ b/wisdem/meson.build
-@@ -1,13 +1,13 @@
- # NumPy include directory - needed in all submodules
--incdir_numpy = get_option('incdir_numpy')
--if incdir_numpy == ''
--    incdir_numpy = run_command(py3,
--      [
--        '-c',
--        'import os; os.chdir(".."); import numpy; print(numpy.get_include())'
--      ],
--      check: true
--    ).stdout().strip()
-+incdir_numpy = meson.get_external_property('numpy-include-dir', 'not-given')
-+if incdir_numpy == 'not-given'
-+  incdir_numpy = run_command(py3,
-+                             [
-+                               '-c',
-+                               'import os; os.chdir(".."); import numpy; print(numpy.get_include())'
-+                             ],
-+                             check: true
-+                            ).stdout().strip()
- endif
- # this creates a raw string which is useful for Windows use of '\' for paths
- incdir_numpy = '''@0@'''.format(incdir_numpy)
