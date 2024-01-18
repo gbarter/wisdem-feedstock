@@ -20,5 +20,5 @@ MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"
 # -wnx flags mean: --wheel --no-isolation --skip-dependency-check
 $PYTHON -m build -w -n -x -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=} || (cat meson_build/meson-logs/meson-log.txt && exit 1)
 
-$PYTHON -m pip install dist/py*.whl
+$PYTHON -m pip install dist/wis*.whl
 bin/rm -rf ${SP_DIR}/meson_build
