@@ -15,7 +15,6 @@ fi
 if [[ $CONDA_BUILD_CROSS_COMPILATION == "1" ]]; then
   # Add pkg-config to cross-file binaries since meson will disable it
   # See https://github.com/mesonbuild/meson/issues/7276
-  echo "[binaries]" >> "$BUILD_PREFIX"/meson_cross_file.txt
   echo "pkg-config = '$(which pkg-config)'" >> "$BUILD_PREFIX"/meson_cross_file.txt
   # Use Meson cross-file flag to enable cross compilation
   EXTRA_FLAGS="--cross-file $BUILD_PREFIX/meson_cross_file.txt"
@@ -41,4 +40,4 @@ export MESON_ARGS="-Dpython_target=${PYTHON} ${MESON_ARGS}"
 python -m build -n -x -w .
 $PYTHON -m pip install --prefix "${PREFIX}" --no-deps dist/*.whl
 #pip install --prefix "${PREFIX}" --no-deps --no-index --find-links dist pyoptsparse
-bin/rm -rf ${SP_DIR}/meson_build
+#bin/rm -rf ${SP_DIR}/meson_build

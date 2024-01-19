@@ -21,4 +21,4 @@ for /f %%f in ('dir /b /S .\dist') do (
     %PYTHON% -m pip install --prefix "%PREFIX%" --no-deps %%f
     if %ERRORLEVEL% neq 0 exit 1
 )
-rmdir /s /q %SP_DIR%\meson_build
+REM rmdir /s /q %SP_DIR%\meson_build
