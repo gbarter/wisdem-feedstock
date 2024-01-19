@@ -54,13 +54,14 @@ requirements:
     - {{ compiler('fortran') }}
     - {{ compiler('m2w64_c') }}   # [win]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
+    - python      # [build_platform != target_platform]
     - make
     - meson
     - ninja
-    - numpy      # [build_platform != target_platform]
+    - numpy
     - pkg-config
-    - python      # [build_platform != target_platform]
     - wheel
+    - python-build
   host:
     - cython
 #    - libblas
