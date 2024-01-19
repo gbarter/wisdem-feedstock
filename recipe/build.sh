@@ -12,15 +12,14 @@ if [ `uname` == Darwin ]; then
     export  LDFLAGS="$LDFLAGS  -Wl,-flat_namespace,-undefined,suppress"
 fi
 
-if [[ $CONDA_BUILD_CROSS_COMPILATION == "1" ]]; then
+#if [[ $CONDA_BUILD_CROSS_COMPILATION == "1" ]]; then
     # Add pkg-config to cross-file binaries since meson will disable it
     # See https://github.com/mesonbuild/meson/issues/7276
     #echo "pkg-config = '$(which pkg-config)'" >> "$BUILD_PREFIX"/meson_cross_file.txt
     # Use Meson cross-file flag to enable cross compilation
     #EXTRA_FLAGS="--cross-file $BUILD_PREFIX/meson_cross_file.txt"
     #NP_INC=""
-    export MESON_ARGS="-Dpython_target=${PYTHON} ${MESON_ARGS}"
-fi
+#fi
 
 # This is done on two lines so that the command will return failure info if it fails
 #PKG_CONFIG=$(which pkg-config)
@@ -32,7 +31,7 @@ fi
 # MESON_ARGS is used within setup.py to pass extra arguments to meson
 # We need these so that dependencies on the build machine are not incorrectly used by meson when building for a different target
 #export MESON_ARGS="-Dincdir_numpy=${NP_INC} -Dpython_target=${PYTHON} ${MESON_ARGS}"
-#export MESON_ARGS="-Dpython_target=${PYTHON} ${MESON_ARGS}"
+export MESON_ARGS="-Dpython_target=${PYTHON} ${MESON_ARGS}"
 
 # We use this instead of pip install . because the way meson builds from within a conda-build process puts the build
 # artifacts where pip install . can't find them. Here we explicitly build the wheel into the working director, wherever that is
