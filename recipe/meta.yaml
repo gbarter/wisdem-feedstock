@@ -18,8 +18,8 @@ source:
   url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
   sha256: 8930a03f5d5bfa0499d742b03f86bbd0cc883c75dd9bc11e342468cc7a2b9f8f
-  patches:
-      - meson_files.patch
+  #patches:
+  #    - meson_files.patch
       
 build:
   number: {{ build }}
