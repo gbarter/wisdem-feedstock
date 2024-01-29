@@ -84,7 +84,7 @@ requirements:
     - openpyxl
     - pandas
     - pydoe2
-    - pyoptsparse
+#    - pyoptsparse
     - pytest
     - python
     - python-benedict
