@@ -1,6 +1,6 @@
 {% set version = "3.13.0" %}
 {% set name = "wisdem" %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 # MPI now supported! https://conda-forge.org/docs/maintainer/knowledge_base.html#message-passing-interface-mpi
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
@@ -35,12 +35,12 @@ build:
   {% else %}
   {% set mpi_prefix = "nompi" %}
   {% endif %}
-  string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
+  string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"  # [not win]
 
-  {% if mpi != 'nompi' %}
-  run_exports:
-    - {{ name }} * {{ mpi_prefix }}_*
-  {% endif %}
+  {% if mpi != 'nompi' %}               # [not win]
+  run_exports:                          # [not win]
+    - {{ name }} * {{ mpi_prefix }}_*   # [not win]
+  {% endif %}                           # [not win]
 
   skip: true  # [py<39]
   #script:
@@ -54,8 +54,7 @@ requirements:
     - {{ compiler('fortran') }}
     - {{ compiler('m2w64_c') }}   # [win]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - python      # [build_platform != target_platform]
-    - make
+    - python                                  # [build_platform != target_platform]
     - meson
     - ninja
     - numpy
@@ -64,15 +63,13 @@ requirements:
     - python-build
   host:
     - cython
-#    - libblas
-#    - liblapack
     - libpython        # [win]
     - python
     - python-build
     - pip
     - numpy
     - setuptools
-    - {{ mpi }}  # [mpi != 'nompi']
+    - {{ mpi }}  # [mpi != 'nompi' and not win]
   run:
 #    - cython
     - jsonschema
@@ -94,7 +91,7 @@ requirements:
     - simpy
     - sortedcontainers
     - statsmodels
-    - {{ mpi }}  # [mpi != 'nompi']    
+    - {{ mpi }}  # [mpi != 'nompi' and not win]    
 
 # Putting numpy in 'host' section and pin_compatible in run per conda-forge guidance
 test:

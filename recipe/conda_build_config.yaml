@@ -1,5 +1,8 @@
-mpi:
-  - nompi
-  - mpich  # [not win]
+mpi:         # [not win]
+  - nompi    # [not win]
+  - mpich    # [not win]
   - openmpi  # [not win]
-  
+fortran_compiler:              # [win]
+  - flang                      # [win]
+fortran_compiler_version:      # [win]
+  - 17                         # [win]
