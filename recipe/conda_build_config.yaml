@@ -1,5 +1,5 @@
-mpi:         # [not win]
-  - nompi    # [not win]
+mpi:
+  - nompi
   - mpich    # [not win]
   - openmpi  # [not win]
 fortran_compiler:              # [win]

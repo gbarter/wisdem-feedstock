@@ -37,10 +37,10 @@ build:
   {% endif %}
   string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"  # [not win]
 
-  {% if mpi != 'nompi' %}               # [not win]
-  run_exports:                          # [not win]
-    - {{ name }} * {{ mpi_prefix }}_*   # [not win]
-  {% endif %}                           # [not win]
+  {% if mpi != 'nompi' %}
+  run_exports:
+    - {{ name }} * {{ mpi_prefix }}_*
+  {% endif %}
 
   skip: true  # [py<39]
   #script:
