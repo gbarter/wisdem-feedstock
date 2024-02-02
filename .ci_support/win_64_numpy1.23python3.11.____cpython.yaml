@@ -6,8 +6,14 @@ m2w64_c_compiler:
 - m2w64-toolchain
 m2w64_fortran_compiler:
 - m2w64-toolchain
+mpi:
+- nompi
+mpich:
+- '4'
 numpy:
 - '1.23'
+openmpi:
+- '4'
 pin_run_as_build:
   python:
     min_pin: x.x
