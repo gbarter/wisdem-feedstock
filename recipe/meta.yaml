@@ -1,6 +1,6 @@
 {% set version = "3.14.0" %}
 {% set name = "wisdem" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # MPI now supported! https://conda-forge.org/docs/maintainer/knowledge_base.html#message-passing-interface-mpi
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
@@ -16,7 +16,7 @@ package:
 
 source:
   url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
-    # Download the tar-ball and do: openssl sha256 file.tar.gz to update
+  # Download the tar-ball and do: openssl sha256 file.tar.gz to update
   sha256: 089af9b76e05384974a40e818dd200b398d1019001146b608355383c0c2a7293
   #patches:
   #    - meson_files.patch
@@ -78,7 +78,7 @@ requirements:
     - moorpy
     - nlopt
     - {{ pin_compatible('numpy') }}
-    - openmdao <3.28
+    - openmdao >3.30
     - openpyxl
     - pandas
     - pydoe2
