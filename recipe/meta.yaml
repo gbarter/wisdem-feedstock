@@ -68,7 +68,7 @@ requirements:
     host:
         - compiler-rt                            # [win]
         - cython
-        - libpython        # [win]
+        - libpython                              # [win]
         - meson
         - python
         - python-build
