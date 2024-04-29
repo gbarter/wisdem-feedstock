@@ -106,6 +106,8 @@ test:
     requires:
         - pip
         - pytest
+    source_files:
+        - wisdem
     commands:
         - pip install marmot-agents
         - "cd wisdem/test/test_gluecode; pytest test_gluecode; cd ../../..;"
