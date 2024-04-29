@@ -18,8 +18,8 @@ source:
     url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
     sha256: 0cc94540c6afcf9b0de7966e1146a350d267fc159f37b8de98fc77d95e355a5d
-    #patches:
-    #    - meson_files.patch
+    patches:
+        - gui_import.patch
       
 build:
     number: {{ build }}
@@ -111,7 +111,7 @@ test:
         - examples
         - examples/02_reference_turbines
     commands:
-        - pip install marmot-agents dearpygui
+        - pip install marmot-agents 
         #- "cd wisdem/test/test_gluecode; pytest test_gluecode; cd ../../..;"
         - "cd examples/02_reference_turbines; python nrel5mw_driver.py; cd ../..;"
         - wisdem --help
