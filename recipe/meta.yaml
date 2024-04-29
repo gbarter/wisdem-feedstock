@@ -69,6 +69,7 @@ requirements:
         - compiler-rt                            # [win]
         - cython
         - libpython        # [win]
+        - meson
         - python
         - python-build
         - pip
