@@ -104,6 +104,7 @@ test:
     imports:
         - wisdem
     requires:
+        - pip
         - pytest
     commands:
         - pip install marmot-agents
