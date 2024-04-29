@@ -113,13 +113,12 @@ test:
     source_files:
         - wisdem
         - examples
-        - examples/02_reference_turbines    # [ not win ]
-        - examples\02_reference_turbines    # [ win ]
+        - examples/02_reference_turbines
     commands:
         - pip install marmot-agents 
         #- "cd wisdem/test/test_gluecode; pytest test_gluecode; cd ../../..;"
-        - "cd examples/02_reference_turbines; python nrel5mw_driver.py; cd ../..;"  # [ not win ]
-        - "cd examples\02_reference_turbines; python nrel5mw_driver.py; cd ..\..;"  # [ win ]
+        - "cd examples/02_reference_turbines; python nrel5mw_driver.py; cd ../..;"  # [not win]
+        - "cd examples\02_reference_turbines; python nrel5mw_driver.py; cd ..\..;"  # [win]
         - wisdem --help
         - compare_designs -h
 
