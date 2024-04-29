@@ -54,9 +54,13 @@ build:
       
 requirements:
     build:
-        - {{ stdlib("c") }}
-        - {{ compiler('c') }}
-        - {{ compiler('fortran') }}
+        # Windows Visual Studio has trouble with pyframe3dd and ccblade, but don't know why
+        # Just need modern GCC version I guess
+        - {{ stdlib("c") }}                      # [not win]
+        - {{ compiler('c') }}                    # [not win]
+        - {{ compiler('fortran') }}              # [not win]
+        - {{ compiler('m2w64_c') }}              # [win]
+        - {{ compiler('m2w64_fortran') }}        # [win]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - python                                 # [build_platform != target_platform]
         - meson                                  # [build_platform != target_platform]
@@ -66,7 +70,8 @@ requirements:
         - wheel                                  # [build_platform != target_platform]
         - python-build                           # [build_platform != target_platform]
     host:
-        - compiler-rt                            # [win]
+        #- compiler-rt                            # [win]
+        - libpython                              # [win]
         - cython
         - meson
         - python
