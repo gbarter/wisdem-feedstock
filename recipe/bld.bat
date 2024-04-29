@@ -1,4 +1,13 @@
 @echo on
+setlocal enabledelayedexpansion
+
+REM Set a few environment variables that are not set due to
+REM https://github.com/conda/conda-build/issues/3993
+set PIP_NO_BUILD_ISOLATION=True
+set PIP_NO_DEPENDENCIES=True
+REM set PIP_IGNORE_INSTALLED=True
+REM set PIP_NO_INDEX=True
+REM set PYTHONDONTWRITEBYTECODE=True
 
 cd %SRC_DIR%
 set NP_INC=%SP_DIR%\numpy\core\include
@@ -34,7 +43,6 @@ REM see explanation here:
 REM https://github.com/conda-forge/scipy-feedstock/pull/253#issuecomment-1732578945
 set "MESON_RSP_THRESHOLD=320000"
 
-
 REM See the unix build.sh for more details on the build process below.
 set MESON_ARGS=-Dincdir_numpy=%NP_INC% -Dpython_target=%PYTHON% %EXTRA_FLAGS%
 
@@ -42,6 +50,8 @@ set MESON_ARGS=-Dincdir_numpy=%NP_INC% -Dpython_target=%PYTHON% %EXTRA_FLAGS%
 REM %PYTHON% -m pip install --prefix "%PREFIX%" --no-deps dist/wisdem-3.9-py3-none-any.whl
 REM %PYTHON% setup.py install --single-version-externally-managed --record=record.txt
 REM pip install --prefix "%PREFIX%" --no-deps --no-index --find-links dist pyoptsparse
+if %ERRORLEVEL% neq 0 (type builddir\meson-logs\meson-log.txt && exit 1)
+
 REM `pip install dist\numpy*.whl` does not work on windows,
 REM so use a loop; there's only one wheel in dist/ anyway
 for /f %%f in ('dir /b /S .\dist') do (
