@@ -17,7 +17,7 @@ package:
 source:
     url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-    sha256: 089af9b76e05384974a40e818dd200b398d1019001146b608355383c0c2a7293
+    sha256: 0cc94540c6afcf9b0de7966e1146a350d267fc159f37b8de98fc77d95e355a5d
     #patches:
     #    - meson_files.patch
       
@@ -54,9 +54,9 @@ build:
       
 requirements:
     build:
-        - {{ stdlib("c") }}           # [not win]
-        - {{ compiler('c') }}         # [not win]
-        - {{ compiler('fortran') }}   # [unix]
+        - {{ stdlib("c") }}
+        - {{ compiler('c') }}
+        - {{ compiler('fortran') }}
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - python                                 # [build_platform != target_platform]
         - meson                                  # [build_platform != target_platform]
@@ -65,9 +65,6 @@ requirements:
         - pkg-config                             # [build_platform != target_platform]
         - wheel                                  # [build_platform != target_platform]
         - python-build                           # [build_platform != target_platform]
-        - clang                                  # [win]
-        - flang                                  # [win]
-        - lld                                    # [win]
     host:
         - compiler-rt                            # [win]
         - cython
@@ -88,7 +85,7 @@ requirements:
         - openmdao >3.30
         - openpyxl
         - pandas
-        - pydoe2
+        - pydoe3
         #    - pyoptsparse
         - pytest
         - python
@@ -110,6 +107,8 @@ test:
     commands:
         - pip install marmot-agents
         - "cd wisdem/test/test_gluecode; pytest test_gluecode; cd ../../..;"
+        - wisdem --help
+        - compare_designs -h
 
 about:
     home: https://wisdem.readthedocs.io
