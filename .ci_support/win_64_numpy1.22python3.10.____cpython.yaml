@@ -1,5 +1,3 @@
-c_stdlib:
-- vs
 channel_sources:
 - conda-forge/label/meson_dev,conda-forge
 channel_targets:
