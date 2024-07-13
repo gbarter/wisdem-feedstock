@@ -17,7 +17,7 @@ package:
 source:
   url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: be091663ab811bf7036a0bd0dbc71fdd89b6cb735bf1bdd0efabff4d09468d32
+  sha256: e2971fd92bcd48b72172dffb1b525a31d70675ca8e0638897d098aa0be281fc9
     #patches:
     #    - gui_import.patch
 build:
