@@ -1,4 +1,4 @@
-{% set version = "3.16.4" %}
+{% set version = "3.17.0" %}
 {% set name = "wisdem" %}
 {% set build = 0 %}
 
@@ -17,7 +17,7 @@ package:
 source:
   url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: c463a59f355c24396e5c6a7ab235d1f99b39870e3cfe46c2417e7ca19333b3fa
+  sha256: 45e9ff348c704b85715c3a864ad8760c5ec7d7f99897362f52511377938f1749
     #patches:
     #    - gui_import.patch
 build:
@@ -83,7 +83,7 @@ requirements:
     - matplotlib-base
     - moorpy
     - nlopt
-    - {{ pin_compatible('numpy') }}
+    - numpy
     - openmdao >3.30
     - openpyxl
     - pandas
@@ -120,7 +120,7 @@ test:
     - python nrel5mw_driver.py
     - cd ..
     - cd ..
-        #- "cd wisdem/test/test_gluecode; pytest test_gluecode; cd ../../..;"
+
 
 about:
   home: https://wisdem.readthedocs.io
@@ -140,3 +140,4 @@ extra:
   recipe-maintainers:
     - ptrbortolotti
     - gbarter
+
