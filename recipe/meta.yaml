@@ -1,4 +1,4 @@
-{% set version = "3.17.1" %}
+{% set version = "3.17.3" %}
 {% set name = "wisdem" %}
 {% set build = 0 %}
 
@@ -17,7 +17,7 @@ package:
 source:
   url: https://github.com/WISDEM/WISDEM/archive/v{{ version }}.tar.gz
     # Download the tar-ball and do: openssl sha256 file.tar.gz to update
-  sha256: a0d2b17628a0db54d6c81f1e8f2f95374fdb15212bbcacc34fd1bb303e508730
+  sha256: c6e328e8231afee58595b6c1224d484e872e418e1e2e454530ea59294c733741
     #patches:
     #    - gui_import.patch
 build:
