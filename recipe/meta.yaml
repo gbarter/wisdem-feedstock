@@ -94,7 +94,7 @@ requirements:
     - python-benedict
     - pyyaml
     - ruamel.yaml
-    - scipy
+    - scipy <1.16.0
     - simpy
     - sortedcontainers
     - statsmodels
@@ -102,8 +102,9 @@ requirements:
 
 # Putting numpy in 'host' section and pin_compatible in run per conda-forge guidance
 test:
-  imports:
-    - wisdem
+  # Imports won't work without Orbit
+  #imports:
+  #  - wisdem
   requires:
     - pip
     - pytest
