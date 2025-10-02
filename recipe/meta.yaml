@@ -94,7 +94,7 @@ requirements:
     - python-benedict
     - pyyaml
     - ruamel.yaml
-    - scipy
+    - scipy <1.16.0
     - simpy
     - sortedcontainers
     - statsmodels
