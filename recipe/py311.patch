@@ -1,5 +1,5 @@
 diff --git a/wisdem/ccblade/ccblade.py b/wisdem/ccblade/ccblade.py
-index 6383f5b3..f1b7c247 100644
+index 6383f5b3..f9598f7c 100644
 --- a/wisdem/ccblade/ccblade.py
 +++ b/wisdem/ccblade/ccblade.py
 @@ -175,11 +175,16 @@ class CCAirfoil(object):
@@ -7,18 +7,19 @@ index 6383f5b3..f1b7c247 100644
          """
  
 -        cl = self.cl_spline.ev(alpha, Re)[0]
-+        cl = self.cl_spline.ev(alpha, Re)
-         cd = self.cd_spline.ev(alpha, Re)[0]
+-        cd = self.cd_spline.ev(alpha, Re)[0]
 -
++        cl = self.cl_spline.ev(alpha, Re)
++        cd = self.cd_spline.ev(alpha, Re)
 +        if isinstance(cl, np.ndarray):
-+            cl = cl[0]
-+            cd = cd[0]
++            cl = cl.item()
++            cd = cd.item()
 +            
          if self.use_cm and return_cm:
 -            cm = self.cm_spline.ev(alpha, Re)[0]
 +            cm = self.cm_spline.ev(alpha, Re)
 +            if isinstance(cm, np.ndarray):
-+                cm = cm[0]
++                cm = cm.item()
              return cl, cd, cm
          else:
              return cl, cd
