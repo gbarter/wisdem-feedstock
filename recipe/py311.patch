@@ -1,0 +1,24 @@
+diff --git a/wisdem/ccblade/ccblade.py b/wisdem/ccblade/ccblade.py
+index 6383f5b3..f1b7c247 100644
+--- a/wisdem/ccblade/ccblade.py
++++ b/wisdem/ccblade/ccblade.py
+@@ -175,11 +175,16 @@ class CCAirfoil(object):
+         also uses a small amount of smoothing to help remove spurious multiple solutions.
+         """
+ 
+-        cl = self.cl_spline.ev(alpha, Re)[0]
++        cl = self.cl_spline.ev(alpha, Re)
+         cd = self.cd_spline.ev(alpha, Re)[0]
+-
++        if isinstance(cl, np.ndarray):
++            cl = cl[0]
++            cd = cd[0]
++            
+         if self.use_cm and return_cm:
+-            cm = self.cm_spline.ev(alpha, Re)[0]
++            cm = self.cm_spline.ev(alpha, Re)
++            if isinstance(cm, np.ndarray):
++                cm = cm[0]
+             return cl, cd, cm
+         else:
+             return cl, cd

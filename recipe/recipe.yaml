@@ -16,6 +16,8 @@ source:
   url: https://github.com/NLRWindSystems/WISDEM/archive/v${{ version }}.tar.gz
   # openssl sha256 WISDEM-version.tar.gz
   sha256: 3b973b7788205eeaebc5a8eb757bddf30443584ee04b2795b78ec46021d938d2
+  patches:
+      - py311.patch
 
 build:
   number: ${{ build_number }}
