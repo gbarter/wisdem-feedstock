@@ -49,7 +49,7 @@ requirements:
   host:
     - if: win
       then:
-        - libpython
+        - distutils-activate-mingw
     - cython
     - meson
     - python
