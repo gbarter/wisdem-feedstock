@@ -32,14 +32,10 @@ build:
 
 requirements:
   build:
-    - if: not win
-      then:
-        - ${{ stdlib("c") }}
-        - ${{ compiler('c') }}
-        - ${{ compiler('fortran') }}
-      else:
-        - ${{ compiler('m2w64_c') }}
-        - ${{ compiler('m2w64_fortran') }}
+    # uses m2w64 toolchain on windows, see conda_build_config.yaml
+    - ${{ stdlib("c") }}
+    - ${{ compiler("c") }}
+    - ${{ compiler("fortran") }}
     - if: build_platform != target_platform
       then:
         - cross-python_${{ target_platform }}
