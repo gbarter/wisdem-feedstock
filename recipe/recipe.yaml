@@ -1,7 +1,7 @@
 context:
   version: "4.2.6"
   name: wisdem
-  build: 0
+  build: 1
   mpi: ${{ mpi or 'nompi' }}
   build_number: ${{ build + 100 if mpi == 'nompi' else build }}
   # MPI now supported! https://conda-forge.org/docs/maintainer/knowledge_base.html#message-passing-interface-mpi
@@ -32,14 +32,10 @@ build:
 
 requirements:
   build:
-    - if: not win
-      then:
-        - ${{ stdlib("c") }}
-        - ${{ compiler('c') }}
-        - ${{ compiler('fortran') }}
-      else:
-        - ${{ compiler('m2w64_c') }}
-        - ${{ compiler('m2w64_fortran') }}
+    # uses m2w64 toolchain on windows, see conda_build_config.yaml
+    - ${{ stdlib("c") }}
+    - ${{ compiler("c") }}
+    - ${{ compiler("fortran") }}
     - if: build_platform != target_platform
       then:
         - cross-python_${{ target_platform }}
@@ -53,7 +49,7 @@ requirements:
   host:
     - if: win
       then:
-        - libpython
+        - distutils-activate-mingw
     - cython
     - meson
     - python
