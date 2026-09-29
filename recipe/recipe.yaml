@@ -71,7 +71,7 @@ requirements:
     - ruamel.yaml
     - jsonmerge
     - jsonschema
-    - openmdao >3.45.1
+    - openmdao >=3.45.1
     - moorpy ==1.2.1
     - pydoe
     - pydoe3
